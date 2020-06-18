@@ -1,0 +1,103 @@
+.carousel {
+  background: #222;
+  border: 1px solid white;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.carousel__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel__bg img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel__item {
+  border: 1px solid white;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  width: 33.33333%;
+}
+
+.carousel__content {
+  box-sizing: border-box;
+  color: #fff;
+  height: 100%;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+}
+
+.carousel__title {
+  transition: all .25s;
+  -webkit-backface-visibility: hidden;
+}
+
+.carousel__subtitle {
+  display: none;
+  -webkit-backface-visibility: hidden;
+}
+
+.carousel__btn {
+  background: #fff;
+  color: #222;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  padding: 15px 30px;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .25s;
+  -webkit-backface-visibility: hidden;
+}
+
+.carousel__image {
+  display: block;
+  opacity: 1;
+  transition: all .25s;
+  width: 100%;
+  max-width: 100%;
+  -webkit-backface-visibility: hidden;
+}
+
+
+.carousel:hover .carousel__title {
+  opacity: .25;
+}
+
+.carousel:hover .carousel__image {
+  opacity: 0;
+}
+
+.carousel:hover .carousel__item:hover .carousel__title {
+  opacity: 1;
+}
+
+.carousel:hover .carousel__item:hover .carousel__flag {
+  display: none;
+}
+
+.carousel:hover .carousel__item:hover .carousel__subtitle{
+  display: block;
+}
+
+.carousel:hover .carousel__item:hover .carousel__btn {
+  opacity: 1;
+}

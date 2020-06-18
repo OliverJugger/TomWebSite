@@ -1,0 +1,124 @@
+
+/* line 1, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area {
+  padding-top: 100px;
+}
+
+@media (max-width: 767px) {
+  /* line 1, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+  .gallery_area {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 1, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+  .gallery_area {
+    padding-top: 70px;
+  }
+}
+
+/* line 12, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .section_title p {
+  padding: 0 10px;
+}
+
+@media (max-width: 767px) {
+  /* line 12, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+  .gallery_area .section_title p {
+    padding: 0;
+  }
+}
+
+/* line 18, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography {
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 22, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography .thumb img {
+  width: 101%;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+/* line 28, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography .hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.08+0,1+100 */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.08) 0%, black 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.08) 0%, black 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 0%, black 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14000000', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */
+  display: table;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+
+}
+
+/* line 46, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography .hover .hover_inner {
+  display: table-cell;
+  vertical-align: bottom;
+  padding-bottom: 48px;
+  padding-left: 48px;
+}
+
+/* line 51, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography .hover .hover_inner h3 {
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+/* line 57, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography .hover .hover_inner span {
+  font-weight: 300;
+  font-size: 13px;
+  font-style: italic;
+  color: #D5D5D5;
+}
+
+/* line 66, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography:hover .hover {
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* line 72, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_gallery.scss */
+.gallery_area .single_photography:hover .thumb img {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
