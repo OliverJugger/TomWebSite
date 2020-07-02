@@ -11,6 +11,8 @@ session_start();
 
 $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position");
 
+$message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY position");
+
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -41,13 +43,18 @@ $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position"
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+    <!-- CSS du spinner -->
+    <link rel="stylesheet" href="css/spinner.css">
 </head>
 
 <body>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
+
+    <!-- Le spinner -->
+    <div id="loadingDiv"><div class="spinner">Loading...</div></div>
 
     <!-- header-start -->
     <header>
@@ -108,8 +115,10 @@ $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position"
                         </div>
                         <div class="col-xl-3 col-md-3">
                             <div class="slider_text text-center slider_custom" style="opacity: 0.5;">
-                                <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">Hi, This is Tom, a professional Photographer <br>
-                                    I Captured Moments</h3>
+                                <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">
+                                  <?= $message1[0] -> {'message'} ?>
+                                      <!-- <br>
+                                    I Captured Moments</h3> -->
                                <!-- <div class="video_service_btn wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">
                                     <a href="#" class="boxed-btn3">Explore Work</a>
                                 </div> -->
@@ -330,6 +339,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
+
+    <!-- JS du spinner -->
+    <script type="text/javascript" src="js/spinner.js"></script>
 </body>
 
 </html>

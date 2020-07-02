@@ -1,7 +1,7 @@
 <?php
 class DB{
 
-	private $host = 'localhost:3308';
+	private $host = 'localhost:3306'; // Attention sur lampp port = 3308
 	private $username = 'root'; //username et mot de passe mysql par défaut
 	private $password = '';
 	private $database = 'photos';

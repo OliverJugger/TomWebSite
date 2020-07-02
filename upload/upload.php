@@ -2,16 +2,16 @@
 require '../db/header.php';
 $DB = new DB();
 if(!isset($_SESSION)){session_start();}
-if(isset($_SESSION['success'])){echo ($_SESSION['success']);}
-
 
 $maxPosition = $DB->query("SELECT MAX(position) FROM photo");
+
 $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position");
 
 $array2 = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position");
 
-
 $arrayAlbums = $DB->query("SELECT distinct(album) FROM photo");
+
+$message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY position");
 
 
 ?>
@@ -48,9 +48,21 @@ $arrayAlbums = $DB->query("SELECT distinct(album) FROM photo");
     <div id="formUpload" class="container text-center">
       
     <h1 class="h1 mb-1 font-weight-normal">Administration des photos du site</h1>
-    <h2><?php if(isset($_SESSION['success'])){echo ($_SESSION['success']);} ?></h2>
+    <h2 class="text-success"><?php if(isset($_SESSION['success'])){echo ($_SESSION['success']); session_destroy();} ?></h2>
     <br/>
     <h3> Page d'accueil </h3>
+
+    <div class="container upload_container">
+      <h4> Message d'accueil </h4>
+        <div class="row text-center">
+          <div class="col-md-12">
+            <form class="form-signin" action="post_message_accueil.php" method="post" enctype="multipart/form-data">
+                    <textarea style="width : 100%;" name="nouveauMessage" type="text"><?= $message1[0] -> {'message'} ?></textarea>
+                    <input class="btn btn-primary submitButton" type="submit" name="submit" value="Mettre à jour">
+              </form>
+          </div>
+        </div>
+      </div>
 
       <div class="container upload_container">
       <h4> Ajouter </h4>
