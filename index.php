@@ -15,7 +15,7 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
 
 ?>
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" id="htmlPage">
 
 <head>
     <meta charset="utf-8">
