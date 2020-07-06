@@ -9,7 +9,7 @@ else{
 session_start();
 }
 
-$array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position");
+$albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'"); 
 
 ?>
 <!doctype html>
@@ -112,106 +112,58 @@ $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position"
         </div>
     </div>
 
-    
- <div id="NewsCarousel2" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:400px">
+    <?php 
+        for ($i=0; $i < count($albums); $i++) {
+			$photos = $DB->query("SELECT * FROM photo WHERE album ='" . $albums[$i] -> {'album'} . "'");
+    ?> 
+ 	<div id="NewsCarousel<?=$i?>" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:500px">
 
                     <!-- Indicators -->
                     <ul class="carousel-indicators">
-                        <li data-target="#NewsCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#NewsCarousel" data-slide-to="1"></li>
-                        <li data-target="#NewsCarousel" data-slide-to="2"></li>
+                        <li data-target="#NewsCarousel<?=$i?>" data-slide-to="0" class="active"></li>
+                        <?php for ($j=1; $j < count($photos); $j++) { ?>
+                        <li data-target="#NewsCarousel<?=$i?>" data-slide-to="<?=$j?>"></li>
+                    	<?php } ?>
                     </ul>
 
                     <!-- The slideshow -->
                     <div class="carousel-inner">
 
                         <div class="carousel-item active" >
-                            <img src="test/chicago.jpg" alt="imgAlt">
+                            <img src="<?="img/gallery/" . $photos[0] -> {'file_name'}?>" alt="imgAlt">
                             <div class="carousel-caption">
-                                <a href="#"><h3 class="carrousselImageDescription">Los Angeles</h3></a>
-                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
+                                <a href="#"><h3 class="carrousselImageDescription"><?=$photos[0] -> {'titre'}?></h3></a>
+                                <p class="carrousselImageDescription"><?=$photos[0] -> {'description'}?></p>
                             </div>
                         </div>
 
+                        <?php for ($k=1; $k < count($photos); $k++) { ?>
+
                         <div class="carousel-item">
-                            <img src="test/la.jpg" alt="imgAlt">
+                            <img src="<?="img/gallery/" . $photos[$k] -> {'file_name'}?>" alt="imgAlt">
                             <div class="carousel-caption">
-                                <a href="#"><h3 class="carrousselImageDescription">Los rtr</h3></a>
-                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
+                                <a href="#"><h3 class="carrousselImageDescription"><?=$photos[$k] -> {'titre'}?></h3></a>
+                                <p class="carrousselImageDescription"><?=$photos[$k] -> {'description'}?></p>
                             </div>
                         </div>
 
-                        <div class="carousel-item">
-                            <img src="test/ny.jpg" alt="imgAlt">
-                            <div class="carousel-caption">
-                                <a href="#"><h3>Los Angeasdales</h3></a>
-                                <p>We had such a great time in LA!</p>
-                            </div>
-                        </div>
+                        <?php } ?>
 
                     </div>
 
 
                     <!-- Left and right controls -->
-                    <a class="carousel-control-prev" href="#NewsCarousel2" data-slide="prev">
+                    <a class="carousel-control-prev" href="#NewsCarousel<?=$i?>" data-slide="prev">
                         <span class="carousel-control-prev-icon"></span>
                     </a>
-                    <a class="carousel-control-next" href="#NewsCarousel2" data-slide="next">
+                    <a class="carousel-control-next" href="#NewsCarousel<?=$i?>" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
 
         </div>
 
-         <div id="NewsCarousel3" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:400px">
+        <?php } ?>
 
-                    <!-- Indicators -->
-                    <ul class="carousel-indicators">
-                        <li data-target="#NewsCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#NewsCarousel" data-slide-to="1"></li>
-                        <li data-target="#NewsCarousel" data-slide-to="2"></li>
-                    </ul>
-
-                    <!-- The slideshow -->
-                    <div class="carousel-inner">
-
-                        <div class="carousel-item active" >
-                            <img src="test/chicago.jpg" alt="imgAlt">
-                            <div class="carousel-caption">
-                                <a href="#"><h3 class="carrousselImageDescription">Los Angeles</h3></a>
-                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="test/la.jpg" alt="imgAlt">
-                            <div class="carousel-caption">
-                                <a href="#"><h3 class="carrousselImageDescription">Los rtr</h3></a>
-                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="test/ny.jpg" alt="imgAlt">
-                            <div class="carousel-caption">
-                                <a href="#"><h3>Los Angeasdales</h3></a>
-                                <p>We had such a great time in LA!</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <!-- Left and right controls -->
-                    <a class="carousel-control-prev" href="#NewsCarousel2" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#NewsCarousel2" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-
-        </div>
-
-    
 
     <div class="contact_info_area border_bottom">
         <div class="container">
