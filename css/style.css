@@ -2497,7 +2497,7 @@ h3 {
 @media (min-width: 768px) {
   /* line 13, ../../Arafath/CL/CL October/215. Photography/HTML/scss/_bradcam.scss */
   .bradcam_area {
-    margin-bottom : 65px;
+   /*margin-bottom : 65px; */
   }
 }
 
