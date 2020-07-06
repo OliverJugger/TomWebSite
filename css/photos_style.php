@@ -11,3 +11,7 @@
 .bradcam_bg_1 {
   background-image: url(<?='"../img/bois.jpg"'?>);
 }
+
+.carrousselImageDescription {
+	color : #fff;
+}

@@ -112,54 +112,7 @@ $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position"
         </div>
     </div>
 
-    <div id="NewsCarousel1" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:400px">
-
-                    <!-- Indicators -->
-                    <ul class="carousel-indicators">
-                        <li data-target="#NewsCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#NewsCarousel" data-slide-to="1"></li>
-                        <li data-target="#NewsCarousel" data-slide-to="2"></li>
-                    </ul>
-
-                    <!-- The slideshow -->
-                    <div class="carousel-inner">
-
-                        <div class="carousel-item active">
-                            <img src="test/chicago.jpg" alt="imgAlt" style="width:100%; height:500px;">
-                            <div class="carousel-caption">
-                                <a href="#"><h3>Los Angeles</h3></a>
-                                <p>We had such a great time in LA!</p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="test/la.jpg" alt="imgAlt" style="width:100%; height:500px;">
-                            <div class="carousel-caption">
-                                <a href="#"><h3>Los rtr</h3></a>
-                                <p>We had such a great time in LA!</p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="test/ny.jpg" alt="imgAlt" style="width:100%; height:500px;">
-                            <div class="carousel-caption">
-                                <a href="#"><h3>Los Angeasdales</h3></a>
-                                <p>We had such a great time in LA!</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Left and right controls -->
-                    <a class="carousel-control-prev" href="#NewsCarousel1" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#NewsCarousel1" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-
-        </div>
-
+    
  <div id="NewsCarousel2" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:400px">
 
                     <!-- Indicators -->
@@ -172,24 +125,24 @@ $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position"
                     <!-- The slideshow -->
                     <div class="carousel-inner">
 
-                        <div class="carousel-item active">
-                            <img src="test/chicago.jpg" alt="imgAlt" style="width:100%; height:350px;">
+                        <div class="carousel-item active" >
+                            <img src="test/chicago.jpg" alt="imgAlt">
                             <div class="carousel-caption">
-                                <a href="#"><h3>Los Angeles</h3></a>
-                                <p>We had such a great time in LA!</p>
+                                <a href="#"><h3 class="carrousselImageDescription">Los Angeles</h3></a>
+                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
                             </div>
                         </div>
 
                         <div class="carousel-item">
-                            <img src="test/la.jpg" alt="imgAlt" style="width:100%; height:350px;">
+                            <img src="test/la.jpg" alt="imgAlt">
                             <div class="carousel-caption">
-                                <a href="#"><h3>Los rtr</h3></a>
-                                <p>We had such a great time in LA!</p>
+                                <a href="#"><h3 class="carrousselImageDescription">Los rtr</h3></a>
+                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
                             </div>
                         </div>
 
                         <div class="carousel-item">
-                            <img src="test/ny.jpg" alt="imgAlt" style="width:100%; height:350px;">
+                            <img src="test/ny.jpg" alt="imgAlt">
                             <div class="carousel-caption">
                                 <a href="#"><h3>Los Angeasdales</h3></a>
                                 <p>We had such a great time in LA!</p>
@@ -197,6 +150,56 @@ $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position"
                         </div>
 
                     </div>
+
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#NewsCarousel2" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#NewsCarousel2" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+
+        </div>
+
+         <div id="NewsCarousel3" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:400px">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#NewsCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#NewsCarousel" data-slide-to="1"></li>
+                        <li data-target="#NewsCarousel" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active" >
+                            <img src="test/chicago.jpg" alt="imgAlt">
+                            <div class="carousel-caption">
+                                <a href="#"><h3 class="carrousselImageDescription">Los Angeles</h3></a>
+                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="test/la.jpg" alt="imgAlt">
+                            <div class="carousel-caption">
+                                <a href="#"><h3 class="carrousselImageDescription">Los rtr</h3></a>
+                                <p class="carrousselImageDescription">We had such a great time in LA!</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="test/ny.jpg" alt="imgAlt">
+                            <div class="carousel-caption">
+                                <a href="#"><h3>Los Angeasdales</h3></a>
+                                <p>We had such a great time in LA!</p>
+                            </div>
+                        </div>
+
+                    </div>
+
 
                     <!-- Left and right controls -->
                     <a class="carousel-control-prev" href="#NewsCarousel2" data-slide="prev">
