@@ -3,7 +3,6 @@
 	$DB = new DB();
 
 	$maxPosition = $DB->query("SELECT MAX(position) FROM photo");
-	$array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position");
 
 	$keyMaxPosition = key($maxPosition[0]);
 	$valueMaxPosition = ((int)$maxPosition[0] -> $keyMaxPosition) + 1;

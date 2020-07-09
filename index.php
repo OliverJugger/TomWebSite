@@ -24,7 +24,9 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
+
+    <link href="css/photos_style.php" rel="stylesheet" type="text/css" media="all" />
+    
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->

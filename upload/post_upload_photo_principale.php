@@ -2,15 +2,11 @@
 	require '../db/header.php';
 	$DB = new DB();
 
-	$maxPosition = $DB->query("SELECT MAX(position) FROM photo");
-	$array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position");
-
-	$keyMaxPosition = key($maxPosition[0]);
-	$valueMaxPosition = ((int)$maxPosition[0] -> $keyMaxPosition) + 1;
-
 	$target_dir = "../img/gallery/";
 	$target_file = $target_dir . basename($_FILES["fileToUploadAjouter"]["name"]);
+	var_dump($target_file);
 	$uploadOk = 1;
+	$fileExists = 0;
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["submit"])) {
@@ -25,8 +21,8 @@
 	    }
 
 		if (file_exists($target_file)) {
-			echo "Sorry, file already exists.";
-			$uploadOk = 0;
+			echo "File already exists.";
+			$fileExists = 1;
 		}
 
 		// Contrainte de memoire
@@ -47,13 +43,13 @@
 		    echo "Sorry, your file was not uploaded.";
 		// if everything is ok, try to upload file
 		} else {
-		    if (move_uploaded_file($_FILES["fileToUploadAjouter"]["tmp_name"], $target_file)) {
+			// Si le fichier existe deja pas besoin de le move
+		    if ($fileExists == 1 || move_uploaded_file($_FILES["fileToUploadAjouter"]["tmp_name"], $target_file)) {
 
 		    	$file_name_uploaded = basename($_FILES["fileToUploadAjouter"]["name"]);
 		    	$page = 'accueil';
-		    	$position = $valueMaxPosition;
 		    	// Par défaut, on met l album 1
-				$DB->queryInsert("INSERT INTO `photo`(`file_name`, `page`, `position`, `album`) VALUES ('" . $file_name_uploaded . "', '" . $page . "'," . (string)$position .", 1)");
+				$DB->queryInsert("UPDATE `photo` SET `file_name`='" . $file_name_uploaded . "' WHERE `page` = 'principaleAccueil'");
 
 		    	$_SESSION['success'] = "The file ". basename( $_FILES["fileToUploadAjouter"]["name"]). " has been uploaded.";
 		    	header('Location: upload.php');

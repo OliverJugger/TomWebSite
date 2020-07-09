@@ -3,15 +3,24 @@ require '../db/header.php';
 $DB = new DB();
 if(!isset($_SESSION)){session_start();}
 
+// Le message d'accueil de la page d'accueil
+$message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY position");
+
+// La photo principale de la page d'accueil
+$photoPrincipaleAccueil = $DB->query("SELECT * FROM photo WHERE page='principaleAccueil'");
+// La photo principale de la page des photos
+$photoPrincipalePhotos = $DB->query("SELECT * FROM photo WHERE page='principalePhotos'");
+
+// La position des photos dans la page d'accueil
 $maxPosition = $DB->query("SELECT MAX(position) FROM photo");
 
 $array = $DB->query("SELECT * FROM photo WHERE page='accueil' ORDER BY position");
 
 $array2 = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position");
 
+// Pour ajouter photos à un album
 $arrayAlbums = $DB->query("SELECT distinct(album) FROM photo");
 
-$message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY position");
 
 
 ?>
@@ -53,7 +62,7 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
     <h3> Page d'accueil </h3>
 
     <div class="container upload_container">
-      <h4> Message d'accueil </h4>
+      <h4> 1- Message d'accueil </h4>
         <div class="row text-center">
           <div class="col-md-12">
             <form class="form-signin" action="post_message_accueil.php" method="post" enctype="multipart/form-data">
@@ -65,7 +74,22 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
       </div>
 
       <div class="container upload_container">
-      <h4> Ajouter </h4>
+      <h4> 2 - Changer de photo d'accueil principale </h4>
+        <div class="row text-center">
+          <div class="col-md-12">
+            <p style="text-decoration: underline;"> Photo principale actuelle </p>
+            <img src="<?="../img/gallery/" . $photoPrincipaleAccueil[0] -> {'file_name'}?>" alt="" loading="lazy">
+            <form class="form-signin" action="post_upload_photo_principale.php" method="post" enctype="multipart/form-data">
+                  <input type="file" name="fileToUploadAjouter" id="fileToUploadAjouter">
+                  <br/>
+                  <input class="btn btn-primary submitButton" type="submit" name="submit" value="Upload">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container upload_container">
+      <h4> 3 - Ajouter une photo à l'accueil</h4>
         <div class="row text-center">
           <div class="col-md-12">
             <form class="form-signin" action="post_upload.php" method="post" enctype="multipart/form-data">
@@ -83,7 +107,7 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
 
     <div class="fonctionnalite">
       <div class="text-center">
-        <h4> Inserver une position </h4>
+        <h4> 4 - Inserver une position </h4>
       </div>
           <ul id="myGallery">
               <?php 
@@ -119,10 +143,25 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
 
     <br/>
     <h3> Page réalisations photo </h3>
-    <div class="container upload_container">
-      <h4> Ajouter </h4>
+	<div class="container upload_container">
+      <h4> 1 - Changer de photo principale </h4>
         <div class="row text-center">
           <div class="col-md-12">
+            <p style="text-decoration: underline;"> Photo principale actuelle </p>
+            <img src="<?="../img/gallery/" . $photoPrincipalePhotos[0] -> {'file_name'}?>" alt="" loading="lazy">
+            <form class="form-signin" action="post_upload_photo_principale_photos.php" method="post" enctype="multipart/form-data">
+                  <input type="file" name="fileToUploadAjouter" id="fileToUploadAjouter">
+                  <br/>
+                  <input class="btn btn-primary submitButton" type="submit" name="submit" value="Upload">
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <div class="container upload_container">
+        <div class="row text-center">
+          <div class="col-md-6">
+      		<h4> 2 - Ajouter photo(s) à un album</h4>
             <form class="form-signin" action="post_upload_video.php" method="post" enctype="multipart/form-data">
                   <input type="file" name="fileToUploadAjouter" id="fileToUploadAjouter">
                   <br/>
@@ -145,7 +184,20 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
                   </select>
                   <br/>
                   <input class="btn btn-primary submitButton" type="submit" name="submit" value="Upload">
-                  <p> La photo s'ajoutera à la suite des autres dans son album (derniere position).</p>
+                  <p> La/les photo(s) s'ajouteront à la suite des autres de l'album (derniere position).</p>
+            </form>
+          </div>
+          <div class="col-md-6">
+          	<h4> 3 - Créer un album</h4>
+            <form class="form-signin" action="post_upload_creer_album.php" method="post" enctype="multipart/form-data">
+
+                  <input name="titreAlbum" class="form-control" type="text" placeholder="Titre de l'album" />
+                  <input name="descriptionAlbum" class="form-control" type="text" placeholder="Description de l'album" />
+
+                  <label class="btn btn-primary submitButton" for="filesAlbum" class="btn">Sélectionner plusieurs fichiers</label><br />
+  				  <input id="filesAlbum" name="photosAlbum[]" type="file" multiple style="visibility:hidden;"/><br />
+                  <input class="btn btn-primary submitButton" type="submit" name="submit" value="Upload">
+                  <p> Créer un album avec les photos dans l'ordre de selection. Les photos n'auront pas de description/titre</p>
             </form>
           </div>
         </div>
@@ -166,54 +218,6 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
           </div>
         </div>
       </div>
-
-      <h4> TEST </h4>
-
-       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="carousel-item">
-              <img src="../img/gallery/test_2.jpg" alt="">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>OK1</h5>
-                <p>Desription1</p>
-              </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-          <div class="carousel-item">
-              <img src="../img/gallery/test_2.jpg" alt="">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>OK2</h5>
-                <p>Description2</p>
-              </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-          <div class="carousel-item">
-              <img src="../img/gallery/test_2.jpg" alt="">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>OK3</h5>
-                <p>Description3</p>
-              </div>
-            </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-      
 
     <p class="mt-5 mb-3 text-muted">&copy;  Site Officiel Tom NL - 2020</p>
 

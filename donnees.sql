@@ -16,3 +16,17 @@ VALUES ('tLrmYRYmpkk', 'Terminator 2', 'Voici un film tourné en 1987 blabla', '
     ('chicago.jpg', 'photos', 1, 'Live at Chicago', 'Great moment', 'albumEte2021'),
      ('la.jpg', 'photos', 2, 'Live at LA', 'Great moment too', 'albumEte2021'),
       ('ny.jpg', 'photos', 3, 'Live at NY', 'Great moment too too', 'albumEte2021');
+
+ALTER TABLE photo
+ADD FOREIGN KEY (album) REFERENCES album(id);
+
+INSERT INTO `album`(`titre`, `description`) 
+VALUES ('album1', 'Mon premier album');
+
+ALTER TABLE `photo` CHANGE `description` `description` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '';
+ALTER TABLE `photo` CHANGE `titre` `titre` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '';
+
+/* Ajouter la photo img/banner1.png dans gallery */
+INSERT INTO `photo`(`file_name`, `page`, `position`, `album`) VALUES ('banner1.png', 'principaleAccueil', 1, 1);
+/* Ajouter la photo img/banner1.png dans gallery */
+INSERT INTO `photo`(`file_name`, `page`, `position`, `album`) VALUES ('banner1.png', 'principalePhotos', 1, 1);
