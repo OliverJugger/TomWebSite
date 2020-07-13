@@ -308,7 +308,6 @@ input:focus {
 
 /* :: 4.0 Header Area CSS */
 .header-area {
-  position: relative;
   z-index: 1000;
   width: 100%; }
   .header-area .top-header-area {

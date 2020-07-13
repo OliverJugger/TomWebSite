@@ -10,6 +10,8 @@ $message1 = $DB->query("SELECT * FROM message WHERE page='accueil' ORDER BY posi
 $photoPrincipaleAccueil = $DB->query("SELECT * FROM photo WHERE page='principaleAccueil'");
 // La photo principale de la page des photos
 $photoPrincipalePhotos = $DB->query("SELECT * FROM photo WHERE page='principalePhotos'");
+// La photo principale de la page des videos
+$photoPrincipaleVideos = $DB->query("SELECT * FROM photo WHERE page='principaleVideos'"); 
 
 // La position des photos dans la page d'accueil
 $maxPosition = $DB->query("SELECT MAX(position) FROM photo");
@@ -22,7 +24,6 @@ $array2 = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position")
 $arrayAlbums = $DB->query("SELECT distinct(album) FROM photo");
 
 
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,8 +33,8 @@ $arrayAlbums = $DB->query("SELECT distinct(album) FROM photo");
     <meta name="description" content="">
     <meta name="author" content="">
 
-     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <title>Page d'administration</title>
 
@@ -204,7 +205,22 @@ $arrayAlbums = $DB->query("SELECT distinct(album) FROM photo");
       </div>
     <h3> Page réalisations vidéos </h3>
     <div class="container upload_container">
-      <h4> Ajouter </h4>
+      <h4> 1 - Changer de photo principale </h4>
+        <div class="row text-center">
+          <div class="col-md-12">
+            <p style="text-decoration: underline;"> Photo principale actuelle </p>
+            <img src="<?="../img/gallery/" . $photoPrincipaleVideos[0] -> {'file_name'}?>" alt="" loading="lazy">
+            <form class="form-signin" action="post_upload_photo_principale_videos.php" method="post" enctype="multipart/form-data">
+                  <input type="file" name="fileToUploadAjouter" id="fileToUploadAjouter">
+                  <br/>
+                  <input class="btn btn-primary submitButton" type="submit" name="submit" value="Upload">
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <div class="container upload_container">
+      <h4> 2 - Ajouter un lien vidéo Youtube </h4>
         <div class="row text-center">
           <div class="col-md-12">
             <form class="form-signin" action="post_upload_video.php" method="post" enctype="multipart/form-data">

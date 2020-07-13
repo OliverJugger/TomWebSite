@@ -5,6 +5,24 @@ if(!isset($_SESSION)){session_start();}
 
 $array = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position");
 
+function youtube_image($id) {
+    $resolution = array (
+        'maxresdefault',
+        'sddefault',
+        'mqdefault',
+        'hqdefault',
+        'default'
+    );
+
+    for ($x = 0; $x < sizeof($resolution); $x++) {
+        $url = '//img.youtube.com/vi/' . $id . '/' . $resolution[$x] . '.jpg';
+        if (get_headers($url)[0] == 'HTTP/1.0 200 OK') {
+            break;
+        }
+    }
+    return $url;
+}
+
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -16,8 +34,13 @@ $array = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position");
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+    <link href="css/photos_style.php" rel="stylesheet" type="text/css" media="all" />
+
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -96,7 +119,7 @@ $array = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position");
     <!-- slider_area_start -->
     <div class="slider_area">
         <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1 black_overlay">
+            <div class="single_slider d-flex align-items-center slider_bg_1 black_overlay">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-9 col-md-9">
@@ -131,7 +154,7 @@ $array = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position");
                                 <!-- Play Button -->
                                 <a href="<?="https://www.youtube.com/watch?v=" . $array[$i] -> {'video_name'}?>" class="video-play-btn"><i class="fa fa-play"></i></a>
                             </div>
-                            <img src="<?="https://img.youtube.com/vi/" . $array[$i] -> {'video_name'} . "/default.jpg"?>" alt="" loading="lazy">
+                            <img src="<?="https://img.youtube.com/vi/" . $array[$i] -> {'video_name'} . "/maxresdefault.jpg"?>" alt="" loading="lazy">
                         </div>
                     </div>              
                     <div class="col-lg-6">
@@ -166,7 +189,7 @@ $array = $DB->query("SELECT * FROM video WHERE page='video' ORDER BY position");
                                 <!-- Play Button -->
                                 <a href="<?="https://www.youtube.com/watch?v=" . $array[$i] -> {'video_name'}?>" class="video-play-btn"><i class="fa fa-play"></i></a>
                             </div>
-                            <img src="<?="https://img.youtube.com/vi/" . $array[$i] -> {'video_name'} . "/default.jpg"?>" alt="" loading="lazy">
+                            <img src="<?="https://img.youtube.com/vi/" . $array[$i] -> {'video_name'} . "/maxresdefault.jpg"?>" alt="" loading="lazy">
                         </div>
                     </div>
                 </div>

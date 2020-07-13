@@ -24,6 +24,8 @@ $albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'");
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -113,7 +115,8 @@ $albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'");
     </div>
 
     <?php 
-        for ($i=0; $i < count($albums); $i++) {
+        // On commence à la deuxième occurence du tableau car la première, l'album 1, c'est les photos de l'accueil
+        for ($i=1; $i < count($albums); $i++) {
 			$photos = $DB->query("SELECT * FROM photo WHERE album ='" . $albums[$i] -> {'album'} . "'");
     ?> 
  	<div id="NewsCarousel<?=$i?>" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:500px">
@@ -122,7 +125,7 @@ $albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'");
                     <ul class="carousel-indicators">
                         <li data-target="#NewsCarousel<?=$i?>" data-slide-to="0" class="active"></li>
                         <?php for ($j=1; $j < count($photos); $j++) { ?>
-                        <li data-target="#NewsCarousel<?=$i?>" data-slide-to="<?=$j?>"></li>
+                            <li data-target="#NewsCarousel<?=$i?>" data-slide-to="<?=$j?>"></li>
                     	<?php } ?>
                     </ul>
 

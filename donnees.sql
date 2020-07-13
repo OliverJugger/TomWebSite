@@ -7,7 +7,8 @@ VALUES ('1.png', 'accueil', 5, '', '', 'album1'),
 
 INSERT INTO `video`(`video_name`, `titre`, `description`, `page`, `position`) 
 VALUES ('tLrmYRYmpkk', 'Terminator 2', 'Voici un film tourné en 1987 blabla', 'video', 1),
- ('tLrmYRYmpkk', 'Terminator 3', 'Voici un film tourné en 1987 blabla', 'video', 2);
+ ('tLrmYRYmpkk', 'Terminator 3', 'Voici un film tourné en 1987 blabla', 'video', 2),
+VALUES ('tLrmYRYmpkk', 'Terminator 2', 'Voici un film tourné en 1987 blabla', 'video', 3);
 
  INSERT INTO `photo`(`file_name`, `page`, `position`, `titre`, `description`, `album`) 
  VALUES ('chicago.jpg', 'photos', 1, 'Live at Chicago', 'Great moment', 'albumEte2020'),
@@ -30,3 +31,4 @@ ALTER TABLE `photo` CHANGE `titre` `titre` VARCHAR(255) CHARACTER SET latin1 COL
 INSERT INTO `photo`(`file_name`, `page`, `position`, `album`) VALUES ('banner1.png', 'principaleAccueil', 1, 1);
 /* Ajouter la photo img/banner1.png dans gallery */
 INSERT INTO `photo`(`file_name`, `page`, `position`, `album`) VALUES ('banner1.png', 'principalePhotos', 1, 1);
+INSERT INTO `photo`(`file_name`, `page`, `position`, `album`) VALUES ('banner1.png', 'principaleVideos', 1, 1);
