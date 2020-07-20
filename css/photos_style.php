@@ -12,6 +12,10 @@
 
 	// La photo principale de la page des photos
 	$photoPrincipalePhotos = $DB->query("SELECT * FROM photo WHERE page='principalePhotos'");
+
+
+  // La photo principale de la page des photos
+  $photoPrincipaleVideos = $DB->query("SELECT * FROM photo WHERE page='principaleVideos'");
 ?>
 
 .bradcam_bg_1 {
@@ -23,7 +27,7 @@
 }
 
 .slider_bg_2 {
-  background-image: url(../img/gallery/<?= $photoPrincipaleAccueil[0] -> {'file_name'} ?>);
+  background-image: url(../img/gallery/<?= $photoPrincipaleVideos[0] -> {'file_name'} ?>);
 }
 
 .carrousselImageDescription {
