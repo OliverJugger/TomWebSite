@@ -60,6 +60,9 @@ $arrayAlbums = $DB->query("SELECT distinct(album) FROM photo");
     <h1 class="h1 mb-1 font-weight-normal">Administration des photos du site</h1>
     <h2 class="text-success"><?php if(isset($_SESSION['success'])){echo ($_SESSION['success']); session_destroy();} ?></h2>
     <br/>
+
+    <a href="../index.php" target="_blank"> <i class="fa fa-arrow-left"></i> Retour au site</a>
+
     <h3> Page d'accueil </h3>
 
     <div class="container upload_container">
