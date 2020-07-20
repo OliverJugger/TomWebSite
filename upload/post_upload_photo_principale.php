@@ -52,7 +52,7 @@
 				$DB->queryInsert("UPDATE `photo` SET `file_name`='" . $file_name_uploaded . "' WHERE `page` = 'principaleAccueil'");
 
 		    	$_SESSION['success'] = "The file ". basename( $_FILES["fileToUploadAjouter"]["name"]). " has been uploaded.";
-		    	//header('Location: upload.php');
+		    	header('Location: upload.php');
 		        //echo "The file ". basename( $_FILES["fileToUploadAjouter"]["name"]). " has been uploaded.";
 		    } else {
 		        echo "Sorry, there was an error uploading your file.";
