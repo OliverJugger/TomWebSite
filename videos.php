@@ -116,23 +116,13 @@ function youtube_image($id) {
     </header>
     <!-- header-end -->
 
-    <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider d-flex align-items-center slider_bg_2 black_overlay">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-9 col-md-9">
-                        </div>
-                        <div class="col-xl-3 col-md-3">
-                            <div class="slider_text text-center slider_custom" style="opacity: 0.5;">
-                                <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">Hi, This is Tom, a professional Photographer <br>
-                                    I Captured Moments</h3>
-                               <!-- <div class="video_service_btn wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">
-                                    <a href="#" class="boxed-btn3">Explore Work</a>
-                                </div> -->
-                            </div>
-                        </div>
+     <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_2 black_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Vidéos</h3>
                     </div>
                 </div>
             </div>

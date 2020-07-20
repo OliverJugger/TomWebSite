@@ -18,6 +18,9 @@ VALUES ('tLrmYRYmpkk', 'Terminator 2', 'Voici un film tourné en 1987 blabla', '
      ('la.jpg', 'photos', 2, 'Live at LA', 'Great moment too', 'albumEte2021'),
       ('ny.jpg', 'photos', 3, 'Live at NY', 'Great moment too too', 'albumEte2021');
 
+
+INSERT INTO `message`(`message`, `page`, `position`) VALUES ('Bienvenue sur mon site officiel TomNL Photographe', 'accueil', 1);
+
 ALTER TABLE photo
 ADD FOREIGN KEY (album) REFERENCES album(id);
 
