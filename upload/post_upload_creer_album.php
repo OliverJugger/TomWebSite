@@ -3,6 +3,8 @@
 	$DB = new DB();
 	$_SESSION['success'] = '';
 
+	var_dump($_POST);
+
 	// On créer l'album
 	if(isset($_POST["submit"])) {
 		$titreAlbum = $_POST['titreAlbum'];
@@ -12,6 +14,11 @@
     	// On récupère l'id pour relier les photos à l'album
     	$querylastAlbumId = $DB->query("SELECT MAX(id) FROM album");
 		$lastAlbumId = $querylastAlbumId[0] -> {'MAX(id)'};
+	} else {
+	 session_start();
+	 $_SESSION['error'] = "Erreur, pas de post";
+
+	 //header('Location: upload.php');
 	}
 
 
@@ -24,7 +31,7 @@
 
     	$position = $position + 1 ;
 		$uploadOk = 1;
-    	$target_dir = "../img/gallery/";
+    	$target_dir = "../img/gallery/albums/";
 		$target_file = $target_dir . basename($file['name']);
 		$imageFileType = strtolower(pathinfo($file['name'] ,PATHINFO_EXTENSION));
 
@@ -36,7 +43,7 @@
 		    	$file_name_uploaded = basename($file['name']);
 		    	$page = 'photos';
 				$DB->queryInsert("INSERT INTO `photo`(`file_name`, `page`, `position`, `album`) VALUES ('" . $file_name_uploaded . "', '" . $page . "'," . (string)$position ."," . (string)$lastAlbumId . ")");
-
+				session_start();
 		    	$_SESSION['success'] = $_SESSION['success'] . "Le fichier". basename($file_name_uploaded). " a bien été upload. \n";
 		    	header('Location: upload.php');
 		    } else {

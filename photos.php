@@ -9,7 +9,7 @@ else{
 session_start();
 }
 
-$albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'"); 
+$albums = $DB->query("SELECT DISTINCT id FROM album");
 
 ?>
 <!doctype html>
@@ -115,9 +115,8 @@ $albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'");
     </div>
 
     <?php 
-        // On commence à la deuxième occurence du tableau car la première, l'album 1, c'est les photos de l'accueil
-        for ($i=1; $i < count($albums); $i++) {
-			$photos = $DB->query("SELECT * FROM photo WHERE album ='" . $albums[$i] -> {'album'} . "'");
+        for ($i=0; $i < count($albums); $i++) {
+			$photos = $DB->query("SELECT * FROM photo WHERE album ='" . $albums[$i] -> {'id'} . "'");
     ?> 
  	<div id="NewsCarousel<?=$i?>" class="carousel slide default-div-top-padding" data-ride="carousel" style="height:500px">
 
@@ -133,7 +132,7 @@ $albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'");
                     <div class="carousel-inner">
 
                         <div class="carousel-item active" >
-                            <img src="<?="img/gallery/" . $photos[0] -> {'file_name'}?>" alt="imgAlt">
+                            <img src="<?="img/gallery/albums/" . $photos[0] -> {'file_name'}?>" alt="imgAlt">
                             <div class="carousel-caption">
                                 <a href="#"><h3 class="carrousselImageDescription"><?=$photos[0] -> {'titre'}?></h3></a>
                                 <p class="carrousselImageDescription"><?=$photos[0] -> {'description'}?></p>
@@ -143,7 +142,7 @@ $albums = $DB->query("SELECT DISTINCT album FROM photo WHERE page='photos'");
                         <?php for ($k=1; $k < count($photos); $k++) { ?>
 
                         <div class="carousel-item">
-                            <img src="<?="img/gallery/" . $photos[$k] -> {'file_name'}?>" alt="imgAlt">
+                            <img src="<?="img/gallery/albums/" . $photos[$k] -> {'file_name'}?>" alt="imgAlt">
                             <div class="carousel-caption">
                                 <a href="#"><h3 class="carrousselImageDescription"><?=$photos[$k] -> {'titre'}?></h3></a>
                                 <p class="carrousselImageDescription"><?=$photos[$k] -> {'description'}?></p>
